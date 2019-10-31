@@ -44,8 +44,6 @@ export const fetchAction = () => async dispatch => {
 
     const airports = {};
 
-    console.log(response.data);
-
     if (response && response.data)
       for (let i = 0; i < response.data.states.length; i++) {
         if (Object.keys(airports).includes(response.data.states[i][2])) {
@@ -65,8 +63,6 @@ export const fetchAction = () => async dispatch => {
     const highestAirports = getHighestAirports(airports, 10);
 
     const data = { airports, info: response.data, highestAirports };
-
-    console.log("these are the data>>>>>>", highestAirports);
 
     // response.data.states.map(item => {
     //   if (Object.keys(airports).includes(item[2])) {

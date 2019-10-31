@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -6,16 +6,17 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-const ErrorDialog = ({ value }) => {
-  const [open, setOpen] = useState(false);
+export default function AlertDialog({ value }) {
+  useEffect(() => {
+    if (value) {
+      setOpen(true);
+    }
+  }, [value]);
+  const [open, setOpen] = React.useState(false);
 
-  //   useEffect(() => {
-  //     if (value) setOpen(value);
-  //   }, [value]);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -23,9 +24,9 @@ const ErrorDialog = ({ value }) => {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Open alert dialog
-      </Button>
+      </Button> */}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -37,7 +38,8 @@ const ErrorDialog = ({ value }) => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Password or Email cannot be empty
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -51,6 +53,4 @@ const ErrorDialog = ({ value }) => {
       </Dialog>
     </div>
   );
-};
-
-export default ErrorDialog;
+}
