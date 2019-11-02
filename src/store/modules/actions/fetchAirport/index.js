@@ -43,15 +43,28 @@ export const fetchAction = () => async dispatch => {
     });
 
     const airports = {};
+    // const icao = {};
 
     if (response && response.data)
       for (let i = 0; i < response.data.states.length; i++) {
+        // Get the most used airports by origin_country name
         if (Object.keys(airports).includes(response.data.states[i][2])) {
           airports[response.data.states[i][2]] =
             airports[response.data.states[i][2]] + 1;
         } else {
           airports[response.data.states[i][2]] = 1;
         }
+        // Get the traffick at each airport
+        // if (Object.keys(icao).includes(response.data.states[i][2])) {
+        //   if (
+        //     [response.data.states[i][2]].find(icao[response.data.states[i][0]])
+        //   ) {
+        //     return;
+        //   }
+        //   icao[response.data.states[i][2]].push(
+        //     icao[response.data.states[i][0]]
+        //   );
+        // }
       }
 
     const getHighestAirports = (pairs, n) => {

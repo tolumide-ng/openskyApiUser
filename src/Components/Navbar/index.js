@@ -31,7 +31,7 @@ export const Navbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit">
-            Photos
+            OpenSky
           </Typography>
         </Toolbar>
       </AppBar>
